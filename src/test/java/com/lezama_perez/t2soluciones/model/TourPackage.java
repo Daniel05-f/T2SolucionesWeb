@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.
+
 
 @Entity
 @Data
@@ -17,24 +17,24 @@ import java.
 public class TourPackage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
-    private Long id;
+    private Integer id;
 
     @Column(nullable = false, length = 150)
     private String destination;
 
-
-    @Min(value = 1)
-    @Max(value = 30)
+    @NotNull
     @Column(nullable = false)
     private Integer days;
 
-
+    @NotNull
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 
     @NotNull
     @Column(nullable = false)
-    @Builder.Default
-    private Boolean includesFlight = false;
+    private Boolean includesFlight;
+
+    @NotNull
+    @Column(nullable = false)
+    private Integer availableSlots;
 }
